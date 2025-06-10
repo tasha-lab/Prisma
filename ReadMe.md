@@ -77,7 +77,7 @@ These CRUD operations are; **Create**,**Read**,**Update** and **Delete** using p
 
 ### **Create**
 
-It is used to insert new data. The data can be passed in an object. You can use <code>create()</code> which returns the object and the number of objects that have been created or <code>createMany()</code> which only returns the objects.
+It is used to insert new data. The data can be passed in an object. You can use <code>create()</code>
 
 ```
 const newUser = await prisma.user.create({
@@ -87,6 +87,30 @@ const newUser = await prisma.user.create({
         age: 26,
     },
 });
+```
+
+which returns the object and the number of objects that have been created or <code>createMany()</code> which only returns the objects.
+
+```
+import { PrismaClient } from '@prisma/client';
+
+const client = new PrismaClient()
+
+async function main() {
+// Create multiple users
+const user = await client.user.create({
+data: [
+    {
+        name: 'Halima',
+        email: 'halima@gmail.com',
+    },
+    {
+        name: 'Maina',
+        email: 'jonnymaina@hotmail.com',
+    },
+],
+})}
+
 ```
 
 ### **Read**
